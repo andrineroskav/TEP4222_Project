@@ -19,7 +19,7 @@ import matplotlib as plt
 CBi = pd.read_csv(r"Data/CBi_NOR.csv", header=[0], index_col=[0])
 
 # Import overview of COICOP and production categories
-Category =  pd.read_excel(r"Data/3_product_categories.xlsx", header=[0,1])#.fillna(0)
+Category =  pd.read_excel(r"Data/3_Product_categories.xlsx", header=[0,1])#.fillna(0)
 COICOP = Category.columns.get_level_values(0)
 
 #%%
@@ -56,7 +56,7 @@ for i in range(12):
     cp_name = 'CP{:02d}'.format(i+1)
     cp_variable = Category.iloc[:, i]
     globals()[cp_name] = cp_variable.dropna('index')
-
+CP09
 
 #%%
 # Summing up the relevant values for each COICOP category   UNIT = TJ / Valuta
@@ -76,11 +76,15 @@ CBi_Urb
 
 #%%
 
-CBi_Urb['Cities [MWh]'] = (CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Cities'].values*1/(3600*10**6))*10**6
-CBi_Urb['Towns and suburbs [MWh]'] = (CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Towns and suburbs'].values*1/(3600*10**6))*10**6
-CBi_Urb['Rural areas[MWh]'] = (CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Rural areas'].values*1/(3600*10**6))*10**6
+#CBi_Urb['Cities [MWh]'] = (CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Cities'].values*1/(3600*10**6))*10**6
+#CBi_Urb['Towns and suburbs [MWh]'] = (CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Towns and suburbs'].values*1/(3600*10**6))*10**6
+#CBi_Urb['Rural areas[MWh]'] = (CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Rural areas'].values*1/(3600*10**6))*10**6
 
-CBi_Urb
+#CBi_Urb
 #CBi_Urb.to_csv('CBi_urb.csv')
 # %%
-print(Expenditure)
+CBi_Urb['Cities [GJ]'] = CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Cities'].values/10**3
+CBi_Urb['Towns and suburbs [GJ]'] = CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Towns and suburbs'].values/10**3
+CBi_Urb['Rural areas[GJ]'] = CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Rural areas'].values/10**3
+CBi_Urb
+# %%
