@@ -16,11 +16,12 @@ import seaborn as sns
 
 #%%
 df1 = pd.read_csv(r"1_CBi_Urb.csv", header=[0], index_col=[0])
-df2 = pd.read_csv(r"2_CBi_Urb.csv", header=[0], index_col=[0])
-df3 = pd.read_csv(r"3_CBi_Urb.csv", header=[0], index_col=[0])
+#df2 = pd.read_csv(r"2_CBi_Urb.csv", header=[0], index_col=[0])
+#df3 = pd.read_csv(r"3_CBi_Urb.csv", header=[0], index_col=[0])
+df3 = pd.read_csv(r"CBi_urb.csv", header=[0], index_col=[0])
 
 display(df1)
-display(df2)
+#display(df2)
 display(df3)
 
 #%%
@@ -111,19 +112,20 @@ plt.title('Consumption Based Energy Footprint', fontsize=12) #fontstyle ='TNR'
 #%%############################################################################################
 ###                             Plotting the 92 Exiobase categories                         ###
 
-CBi = CBi_NOR.drop(index=['Inland water transportation services', 'Nuclear fuel'])
+CBi = CBi_NOR.drop(index=['Inland water transportation services', 'Nuclear fuel', 'Electricity by nuclear'])
+
 CBi
 
 #%%
 # Set the size of the figure
-rcParams['figure.figsize'] = 8, 10 # Inches
+rcParams['figure.figsize'] = 12, 15 # Inches
 rcParams['font.family'] = 'Times New Roman'
 rcParams['font.size'] = 12        # does not work on axes and legend ?
 
 # Create the horizontal bar plot (barh (horizontal) vs bar (vertical))
 ax = CBi.sort_values(by=['CBi'], ascending=True).plot(kind='barh', color='red')#, color=sns.color_palette('Spectral', n_colors=12))
 
-# Set font size for axes labels
+# Set font size for_B axes labels
 ax.xaxis.label.set_size(12)
 ax.yaxis.label.set_size(12)
 
