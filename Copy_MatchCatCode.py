@@ -61,7 +61,7 @@ CP09
 #%%
 # Summing up the relevant values for each COICOP category   UNIT = TJ / Valuta
 
-CBi_Urb = pd.DataFrame(index=COICOP, columns=['CBi (TJ/M.Euro)'])              # Only COICOP category CPxx
+CBi_Urb = pd.DataFrame(index=COICOP, columns=['CBi [TJ/M.Euro]'])              # Only COICOP category CPxx
 #CBi_Urb = pd.DataFrame(index=Category.columns, columns=['CBi'])     # CPxx plus name of COICOP category
 
 for i in range(1, 13):
@@ -76,15 +76,18 @@ CBi_Urb
 
 #%%
 
-#CBi_Urb['Cities [MWh]'] = (CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Cities'].values*1/(3600*10**6))*10**6
-#CBi_Urb['Towns and suburbs [MWh]'] = (CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Towns and suburbs'].values*1/(3600*10**6))*10**6
-#CBi_Urb['Rural areas[MWh]'] = (CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Rural areas'].values*1/(3600*10**6))*10**6
+CBi_Urb['Cities [MWh]'] = (CBi_Urb['CBi [TJ/M.Euro]'].values * Expenditure['Cities'].values*1/(3600*10**6))*10**6
+CBi_Urb['Towns and suburbs [MWh]'] = (CBi_Urb['CBi [TJ/M.Euro]'].values * Expenditure['Towns and suburbs'].values*1/(3600*10**6))*10**6
+CBi_Urb['Rural areas [MWh]'] = (CBi_Urb['CBi [TJ/M.Euro]'].values * Expenditure['Rural areas'].values*1/(3600*10**6))*10**6
 
-#CBi_Urb
-#CBi_Urb.to_csv('CBi_urb.csv')
-# %%
-CBi_Urb['Cities [GJ]'] = CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Cities'].values/10**3
-CBi_Urb['Towns and suburbs [GJ]'] = CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Towns and suburbs'].values/10**3
-CBi_Urb['Rural areas[GJ]'] = CBi_Urb['CBi (TJ/M.Euro)'].values * Expenditure['Rural areas'].values/10**3
+
+CBi_Urb.to_csv('CBi_urb.csv')
+#%%
 CBi_Urb
+
 # %%
+#CBi_Urb['Cities [GJ]'] = CBi_Urb['CBi [TJ/M.Euro]'].values * Expenditure['Cities'].values/10**3
+#CBi_Urb['Towns and suburbs [GJ]'] = CBi_Urb['CBi [TJ/M.Euro]'].values * Expenditure['Towns and suburbs'].values/10**3
+#CBi_Urb['Rural areas[GJ]'] = CBi_Urb['CBi [TJ/M.Euro]'].values * Expenditure['Rural areas'].values/10**3
+#CBi_Urb
+#%%

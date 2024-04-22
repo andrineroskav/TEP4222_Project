@@ -36,9 +36,9 @@ COICOP = Category.columns.get_level_values(0)
 # "Pivoting" the table: (12,4) -> (3,12)
 df = pd.DataFrame(index=['Cities', 'Towns and suburbs', 'Rural areas'], columns=COICOP)
 
-df.loc['Cities'] = df3.loc[:,'Cities'].values
-df.loc['Towns and suburbs'] = df3.loc[:,'Towns and suburbs'].values
-df.loc['Rural areas'] = df3.loc[:,'Rural areas'].values
+df.loc['Cities'] = df3.loc[:,'Cities [MWh]'].values
+df.loc['Towns and suburbs'] = df3.loc[:,'Towns and suburbs [MWh]'].values
+df.loc['Rural areas'] = df3.loc[:,'Rural areas [MWh]'].values
 
 df
 
@@ -50,9 +50,10 @@ df
 ######################################################################################
 
 
-        # print(sns.color_palette("pastel6").as_hex())     # see colors as hex for indvidual plots
-
-
+print(sns.color_palette("Spectral", n_colors=12).as_hex())     # see colors as hex for indvidual plots
+sns.color_palette("Spectral")
+color = ['#c72e4c', '#e55749', '#f7814c', '#fdb163', '#237502', '#fff3ac', '#f6fbb0', '#ee02fa', '#aedea3', '#7ccaa5', '#4ea7b0', '#3d79b6']
+color2 = ['#FF5733', '#FFC300', '#FF3333', '#33FF57', '#33FFC3', '#FF5733', '#C300FF', '#33FFC3', '#33FF57', '#FF3333', '#FFC300', '#C300FF']
 # Apply the default theme       # ?
 #sns.set_theme() # y / n ?       # ?
 
@@ -73,7 +74,7 @@ rcParams['font.size'] = 12        # does not work on axes and legend ?
 
 
 # Create the horizontal bar plot (barh (horizontal) vs bar (vertical))
-ax = df.plot(kind='barh', stacked=True, color=sns.color_palette('Spectral', n_colors=12))
+ax = df.plot(kind='barh', stacked=True, color=color2)
 
 # PLot legend outside of the plot
 plt.legend(bbox_to_anchor=(1, 1), loc=2, borderaxespad=0, fontsize=12)
